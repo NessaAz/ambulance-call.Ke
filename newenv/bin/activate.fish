@@ -57,7 +57,11 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
+<<<<<<< HEAD
 set -gx VIRTUAL_ENV '/home/vanessa/Documents/django-python/django-python-projects/week5/capstone/newenv'
+=======
+set -gx VIRTUAL_ENV '/home/vanessa/Documents/django-python-projects/week5/capstone/newenv'
+>>>>>>> fc9e06501f7cdf00521c7abaf246eff37c022a87
 
 # https://github.com/fish-shell/fish-shell/issues/436 altered PATH handling
 if test (echo $FISH_VERSION | head -c 1) -lt 3
