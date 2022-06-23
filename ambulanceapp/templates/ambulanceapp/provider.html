@@ -14,28 +14,40 @@
                     <table class="table">
                         <tbody>
                             <tr>
-                                <th>{{ form.username.label }}</th>
-                                <th>{{ form.email.label }}</th>
+                                <th>{{ form.first_name.label }}</th>
+                                <th>{{ form.last_name.label }}</th>
                             </tr>
                             <tr>
-                                <td>{{ form.username }}</td>
-                                <td>{{ form.email }}</td>
+                                <td>{{ form.first_name }}</td>
+                                <td>{{ form.last_name }}</td>
                             </tr>
                             <tr>
-                                <td>{{ form.username.errors }}</td>
-                                <td>{{ form.email.errors }}</td>
+                                <td>{{ form.first_name.errors }}</td>
+                                <td>{{ form.last_name.errors }}</td>
                             </tr>
                             <tr>
-                                <th>Password</th>
-                                <th>Confirm Password</th>
+                                <th>{{ form.address_one.label }}</th>
+                                <th>{{ form.address_two.label }}</th>
                             </tr>
                             <tr>
-                                <td>{{ form.password1 }}</td>
-                                <td>{{ form.password2 }}</td>
+                                <td>{{ form.address_one }}</td>
+                                <td>{{ form.address_two }}</td>
                             </tr>
                             <tr>
-                                <td>{{ form.password1.errors }}</td>
-                                <td>{{ form.password2.errors }}</td>
+                                <td>{{ form.address_one.errors }}</td>
+                                <td>{{ form.address_two.errrors }}</td>
+                            </tr>
+                            <tr>
+                                <th>{{ form.county.label }}</th>
+                                <th>{{ form.town.label }}</th>
+                            </tr>
+                            <tr>
+                                <td>{{ form.county }}</td>
+                                <td>{{ form.town }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ form.county.errors }}</td>
+                                <td>{{ form.town.errors }}</td>
                             </tr>
                         </tbody>
                     </table>
