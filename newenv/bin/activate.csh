@@ -10,11 +10,7 @@ alias deactivate 'test $?_OLD_VIRTUAL_PATH != 0 && setenv PATH "$_OLD_VIRTUAL_PA
 # Unset irrelevant variables.
 deactivate nondestructive
 
-<<<<<<< HEAD
 setenv VIRTUAL_ENV '/home/vanessa/Documents/django-python/django-python-projects/week5/capstone/newenv'
-=======
-setenv VIRTUAL_ENV '/home/vanessa/Documents/django-python-projects/week5/capstone/newenv'
->>>>>>> fc9e06501f7cdf00521c7abaf246eff37c022a87
 
 set _OLD_VIRTUAL_PATH="$PATH:q"
 setenv PATH "$VIRTUAL_ENV:q/bin:$PATH:q"

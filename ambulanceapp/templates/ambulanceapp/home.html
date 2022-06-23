@@ -1,0 +1,50 @@
+{% extends 'ambulanceapp/base.html' %}
+{% load static %}
+{% load cloudinary %}
+{% load bootstrap4 %}
+
+{% block content %}
+
+
+
+
+{% endblock content %}
+
+
+
+
+
+{% comment %} 
+<div class="container">
+    <!-- <div class="row">
+        <div class="col-md-6"></div>
+    </div> -->        
+    <!-- background-image: url(static/images/outside.jpg); -->
+    {% block content  %}
+    <section class="landing">
+      <div class="wrapper">
+        <div class="container-fluid landing-container">
+          <div class="p-3">
+          </div>
+          <div class="row h-75">
+            <div class="col-lg-6 home-left">
+              <h2 class="color-primary home-title">
+                theOutside
+              </h2>
+              <p class="home-para">
+                welcome to your one-stop shop for all your neighbourhood news.<br />
+                you can  also contribute to the community<br />Signup to get started.
+              </p>
+              <a href="{% url "signup" %}" class="btn home-btn mt-3">Get Started</a>
+            
+            </div>
+            <div class="col-lg-6 home-right ">
+              <img src="static/images/outside.jpg" alt="community pic" class="landing-image">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% endblock content  %}
+</div> {% endcomment %}
+
