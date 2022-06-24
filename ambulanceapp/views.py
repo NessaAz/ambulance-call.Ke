@@ -6,7 +6,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.views.generic import ListView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .forms import *
 from .models import *
@@ -14,9 +14,38 @@ from .models import *
 
 
 def home(request):  
-    context = {}
+    accounts =  Account.objects.all()
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(accounts, 10)
+    try:
+        accounts = paginator.page(page)
+    except PageNotAnInteger:
+        accounts = paginator.page(1)
+    except EmptyPage:
+        accounts = paginator.page(paginator.num_pages) 
+
+    # accounts =  Account.objects.get(uuid=uuid)
+    context = {
+        #'account_list':account_list,
+        'accounts':accounts
+    }
     
     return render(request, 'ambulanceapp/account.html', context)
+
+# def get_data(request):
+
+#     my_data = userdetails.objects.all() #for all the records 
+#     one_data = userdetails.objects.get(pk=1) # 1 will return the first item change it depending on the data you want 
+#     context={
+       
+#       'my_data':my_data,
+#       'one_data':one_data,
+    
+#     } 
+
+#     return render(request, 'get_data.html', context)
+
 
 
 def provider(request, template='ambulanceapp/provider.html'):
@@ -123,7 +152,7 @@ def accountcru(request, uuid=None):
     context = {        'form': form,
         'account':account   }
     
-    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
         template = 'ambulanceapp/accountitemform.html'
     else:
         template = 'ambulanceapp/accountcru.html'

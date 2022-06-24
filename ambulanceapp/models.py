@@ -30,11 +30,12 @@ class Account(models.Model):
     address_one = models.CharField(max_length=100)
     address_two = models.CharField(max_length=100, blank=True)
     county = models.CharField(max_length=50)
-    town = models.CharField(max_length=2)
+    town = models.CharField(max_length=20)
     phone = models.CharField(max_length=20)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     created_on = models.DateField(auto_now_add=True)
     image = CloudinaryField('images', default='image')
+
 
     class Meta:
         verbose_name_plural = 'accounts'

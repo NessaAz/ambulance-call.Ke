@@ -4,9 +4,9 @@
       <ul class="nav navbar-nav navbar-right">
         {% if user.is_authenticated %}
         
-
-          <li><a href="{% url 'account_list' %}"class="p-r-none">accounts</a></li>
-            <li><a href="/logout/">log out</a></li>
+        
+          <li><a href="{% url 'account_new' %}" class="p-r-none"  ><i class="fa-solid fa-plus"></i>add account</a></li>
+            <li><a href="/logout/">logout</a></li>
             
             
         {% else %}
@@ -30,18 +30,19 @@
       margin: 0;
       padding: 0;
       display: flex;
-      flex-flow: row nowrap;
+      flex-flow: row;
       justify-content: space-around;    
+      font-size: 21px;
   }
   
   nav li {
       margin: 0;
-      padding: 0;
+      padding: 40;
       display: block;
   }
 
   nav {
-    height: 208px;
+    height: 100px;
 }
 
 nav ul {

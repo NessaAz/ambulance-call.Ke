@@ -5,20 +5,19 @@
     <div id="content-container" class="container p-none">
         <div id="al-container" class="side-p">
             <div id="al-control">
-                <h3 class="ad-mh">list of available ambulance providers
+                <h3 class="ad-mh">available ambulance providers
                     {# Add Account Link #}
                     <span class="pull-right">
-                        <a href="{% url 'account_new' %}"
-                           class="btn btn-link p-r-none">+ Add New Account</a>
+                        <a href="{% url 'account_list' %}"class="btn btn-link p-r-none">accounts</a>
                     </span>
                 </h3>
                 {# Account Search Form #}
                 <form action="{% url 'account_list' %}" method="get">
-                    <input id="al-search" type="text"
+                    <input id="al-search" type="text" placeholder="find a service"
                            name="account" value="{{ request.GET.account }}"
                            class="form-control" />
                     <input type="submit"
-                           value="Search" class="btn btn-success" />
+                           value="search" class="btn btn-success search-btn" />
                 </form>
             </div>
             {# List of Accounts #}
@@ -30,9 +29,73 @@
                     </li>
                 {% endfor %}
             </ul>
-            {# Pagination Section #}
+                <card>
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>company</th>
+                            <th>services</th>
+                            <th>price range</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for account in accounts %}
+                            <tr>
+                            <td>{{ account.name }}</td>
+                            <td>{{ account.description }}</td>
+                            <td>{{ user.email }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </card>   
+        {% if accounts.has_other_pages %}
+          <ul class="pagination">
+            {% if users.has_previous %}
+              <li><a href="?page={{ accounts.previous_page_number }}">&laquo;</a></li>
+            {% else %}
+              <li class="disabled"><span>&laquo;</span></li>
+            {% endif %}
+            {% for i in accounts.paginator.page_range %}
+              {% if users.number == i %}
+                <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+              {% else %}
+                <li><a href="?page={{ i }}">{{ i }}</a></li>
+              {% endif %}
+            {% endfor %}
+            {% if accounts.has_next %}
+              <li><a href="?page={{ accounts.next_page_number }}">&raquo;</a></li>
+            {% else %}
+              <li class="disabled"><span>&raquo;</span></li>
+            {% endif %}
+          </ul>
+        {% endif %}
+
+        {% if accounts.has_other_pages %}
+          <ul class="pagination">
+            {% if accounts.has_previous %}
+              <li><a href="?page={{ accounts.previous_page_number }}">&laquo;</a></li>
+            {% else %}
+              <li class="disabled"><span>&laquo;</span></li>
+            {% endif %}
+            {% for i in accounts.paginator.page_range %}
+              {% if accounts.number == i %}
+                <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+              {% else %}
+                <li><a href="?page={{ i }}">{{ i }}</a></li>
+              {% endif %}
+            {% endfor %}
+            {% if users.has_next %}
+              <li><a href="?page={{ accounts.next_page_number }}">&raquo;</a></li>
+            {% else %}
+              <li class="disabled"><span>&raquo;</span></li>
+            {% endif %}
+          </ul>
+        {% endif %}
+
+            {# PAGINATION #}
             {% if is_paginated %}
-    <div id="al-paginate">
+        <div id="al-paginate">
         <ul class="strip-list al-pgnt-list">
             {% if page_obj.has_previous %}
                 <li class="pull-left">
@@ -47,8 +110,9 @@
                 </li>
             {% endif %}
         </ul>
-    </div>
-    {% endif %}
+        </div>
+        {% endif %}
         </div>
     </div>
 {% endblock content %}
+

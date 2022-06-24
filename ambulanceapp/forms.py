@@ -39,36 +39,33 @@ class AccountForm(forms.ModelForm):
         )
         widgets = {
             'name': forms.TextInput(
-                attrs={
-                    'placeholder':'Company',
-                    'class':'col-md-12 form-control'
-                }
+                attrs={ 'placeholder':'Company', 'class':'col-md-8 form-control'  }
             ),
-            'desc': forms.Textarea(
+            'description': forms.Textarea(
                 attrs={
-                    'placeholder':'Enter a description',
+                    'placeholder':'Enter description,response time and scope of service',
                     'class':'form-control'
                 }
             ),
             'address_one': forms.TextInput(
                 attrs={
-                    'placeholder':'Street Address',
+                    'placeholder':'Physical Address:ABC Building etc..',
                     'class':'gi-form-addr form-control'
                 }
             ),
             'address_two': forms.TextInput(
                 attrs={
-                    'placeholder':'ABC Building etc..',
+                    'placeholder':'Geographical area of service',
                     'class':'gi-form-addr form-control'
                 }
             ),
-            # 'city': forms.TextInput(
-            #     attrs={
-            #         'placeholder':'County',
-            #         'class':'gi-form-addr form-control'
-            #     }
-            # ),
-            'state': forms.TextInput(
+            'county': forms.TextInput(
+                attrs={
+                    'placeholder':'County',
+                    'class':'gi-form-addr form-control'
+                }
+            ),
+            'town': forms.TextInput(
                 attrs={
                     'placeholder':'Town',
                     'class':'gi-form-addr form-control'
@@ -76,7 +73,7 @@ class AccountForm(forms.ModelForm):
             ),
             'phone': forms.TextInput(
                 attrs={
-                    'placeholder':'Phone',
+                    'placeholder':'Phone number' ,
                     'class':'gi-form-addr form-control'
                 }
             ),

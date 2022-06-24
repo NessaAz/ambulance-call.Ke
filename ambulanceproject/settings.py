@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 import cloudinary, cloudinary.uploader, cloudinary.api
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -86,7 +87,7 @@ DATABASES = {
 }
 
 
-DATABASE_URL = 'postgresql://ielhxqhqpdcsfz:4f4fd3592e74b9402154a9dec09f00b5716a2754085d207d6b26ada8df093e6c@ec2-18-204-142-254.compute-1.amazonaws.com:5432/d645tkr205mpet'
+DATABASE_URL = 'postgresql://gyzvvhvleqbskz:221a8ee3fef1c4e9968dcb86257a6a824e086f762fbb1db1b61961ea5b6be0a5@ec2-44-197-128-108.compute-1.amazonaws.com:5432/dd30anrpgmvs3m'
 DISABLE_COLLECTSTATIC = '1'
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -124,13 +125,17 @@ USE_TZ = True
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATIC_URL = 'static/'
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
-                    os.path.join(BASE_DIR, 'static')
-                    ]
+    os.path.join(BASE_DIR, 'static'),
+]
 MEDIA_URL = '/images/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Configure Django App for Heroku.
+django_heroku.settings(locals())
