@@ -12,6 +12,7 @@ urlpatterns = [
     path('account/(?P<uuid>[\w-]+)/', views.accountdetail,name='account_detail'),
     path('account/new/',views.accountcru, name='account_new'),
     path('account/list/', views.AccountList.as_view(), name='account_list'),    
+    path('account/edit/', views.accountcru, name='accountupdate'),    
 
 
 ]

@@ -34,8 +34,8 @@ class AmbulanceproviderForm(AddressMixin, UserCreationForm):
 class AccountForm(forms.ModelForm):
     class Meta:
         model = Account
-        fields = ('name', 'desc', 'address_one',
-                  'address_two', 'city', 'state', 'phone',
+        fields = ('name', 'description', 'address_one',
+                  'address_two', 'county', 'town', 'phone',
         )
         widgets = {
             'name': forms.TextInput(
