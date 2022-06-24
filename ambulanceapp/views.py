@@ -120,8 +120,10 @@ def accountcru(request, uuid=None):
 
     context = {        'form': form,
         'account':account   }
-
-
-    template = 'ambulanceap/accountcru.html'
+    
+    if request.is_ajax():
+        template = 'ambulanceapp/accountitemform.html'
+    else:
+        template = 'ambulanceapp/accountcru.html'
 
     return render(request, template, context)

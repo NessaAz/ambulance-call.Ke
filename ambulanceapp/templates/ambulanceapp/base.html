@@ -62,4 +62,15 @@
             width: 100%;
         }
     </style>
+    <script>
+        $(document).ready(function() {
+
+            
+            $('#gi-container').delegate('.edit-account', 'click', function(e) {
+                e.preventDefault();
+                $('#gi-container').load($(this).attr('href'));
+            });
+        
+        });
+    </script>
 </html>
