@@ -3,8 +3,13 @@ from pathlib import Path
 import cloudinary, cloudinary.uploader, cloudinary.api
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+cloudinary.config( 
+  cloud_name = 'nessaaz', 
+  api_key = '267196223421864',
+  api_secret = 'ck1X-h5xdDAON2PIc4xaBjuJOcU',
+)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -40,6 +45,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',    
 ]
 
 ROOT_URLCONF = 'ambulanceproject.urls'
@@ -70,12 +76,18 @@ WSGI_APPLICATION = 'ambulanceproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+     'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ambulance',
+        'USER': 'vanessa',
+        'PASSWORD': '123',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
 
+DATABASE_URL = 'postgresql://ielhxqhqpdcsfz:4f4fd3592e74b9402154a9dec09f00b5716a2754085d207d6b26ada8df093e6c@ec2-18-204-142-254.compute-1.amazonaws.com:5432/d645tkr205mpet'
+DISABLE_COLLECTSTATIC = '1'
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -100,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Nairobi'
 
 USE_I18N = True
 
@@ -109,6 +121,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATIC_URL = 'static/'
 
