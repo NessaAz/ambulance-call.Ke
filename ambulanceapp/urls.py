@@ -13,7 +13,7 @@ urlpatterns = [
     path('account/new/',views.accountcru, name='account_new'),
     path('account/list/', views.AccountList.as_view(), name='account_list'),    
     path('account/edit/', views.accountcru, name='accountupdate'),    
-
+    path('contact/(?P<uuid>[\w-]+)/', views.contactdetail, name='contactdetail')
 
 ]
 

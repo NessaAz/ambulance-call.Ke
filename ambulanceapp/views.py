@@ -130,7 +130,7 @@ def accountcru(request, uuid=None):
 
 
 @login_required()
-def contact_detail(request, uuid):
+def contactdetail(request, uuid):
 
     contact = Contact.objects.get(uuid=uuid)
 
