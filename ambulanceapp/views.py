@@ -91,8 +91,10 @@ def accountdetail(request, uuid):
     account = Account.objects.get(uuid=uuid)
     if account.owner != request.user:
             return HttpResponseForbidden()
+        
+    contacts = Contact.objects.filter(account=account)
 
-    context = {'account': account,}
+    context = {'account': account,         'contacts': contacts,}
 
     return render(request, 'ambulanceapp/accountdetail.html', context)    
 
