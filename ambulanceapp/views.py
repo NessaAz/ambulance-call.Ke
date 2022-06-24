@@ -1,5 +1,5 @@
 from multiprocessing import context
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.contrib.auth.views import LoginView, LogoutView
@@ -99,21 +99,28 @@ def accountdetail(request, uuid):
 
 
 @login_required()
-def accountcru(request):
+def accountcru(request, uuid=None):
+    
+    if uuid:
+        account = get_object_or_404(Account, uuid=uuid)
+        if account.owner != request.user:
+            return HttpResponseForbidden()
+    else:
+        account = Account(owner=request.user)
 
     if request.POST:
-        form = AccountForm(request.POST)
+        form = AccountForm(request.POST, instance=account)
         if form.is_valid():
-            account = form.save(commit=False)
-            account.owner = request.user
-            account.save()
-            redirect_url =  'accountdetail'
+            form.save()
+            redirect_url =      'account_detail'          
             
             return HttpResponseRedirect(redirect_url)
     else:
-        form = AccountForm()
+        form = AccountForm(instance=account)
 
-    context = {        'form': form,    }
+    context = {        'form': form,
+        'account':account   }
+
 
     template = 'ambulanceap/accountcru.html'
 
