@@ -1,6 +1,7 @@
+from multiprocessing import context
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.contrib.auth.views import LoginView, LogoutView
 from django.views.generic import ListView
 from django.contrib.auth.decorators import login_required
@@ -81,3 +82,16 @@ class AccountList(ListView):
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(AccountList, self).dispatch(*args, **kwargs)
+    
+    
+    
+@login_required()
+def accountdetail(request, uuid):
+
+    account = Account.objects.get(uuid=uuid)
+    if account.owner != request.user:
+            return HttpResponseForbidden()
+
+    context = {'account': account,}
+
+    return render(request, 'accounts/account_detail.html', context)    
