@@ -127,3 +127,11 @@ def accountcru(request, uuid=None):
         template = 'ambulanceapp/accountcru.html'
 
     return render(request, template, context)
+
+
+@login_required()
+def contact_detail(request, uuid):
+
+    contact = Contact.objects.get(uuid=uuid)
+
+    return render(request, 'ambulanceapp/contactdetail.html', {'contact': contact}    )
