@@ -2,6 +2,10 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.contrib.auth.views import LoginView, LogoutView
+from django.views.generic import ListView
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+
 
 from .forms import *
 from .models import *
@@ -50,3 +54,18 @@ def provider(request, template='ambulanceapp/provider.html'):
 
     return render(request, template, {'form':form})
 
+
+
+#PROVIDER ACCOUNTS VIEWS
+class AccountList(ListView):
+    model = Account
+    template_name = 'ambulanceapp/account.html'
+    context_object_name = 'account'
+
+    def get_queryset(self):
+        account_list = Account.objects.filter(owner=self.request.user)
+        return account_list
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(AccountList, self).dispatch(*args, **kwargs)
