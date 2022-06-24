@@ -95,3 +95,26 @@ def accountdetail(request, uuid):
     context = {'account': account,}
 
     return render(request, 'ambulanceapp/accountdetail.html', context)    
+
+
+
+@login_required()
+def account_cru(request):
+
+    if request.POST:
+        form = AccountForm(request.POST)
+        if form.is_valid():
+            account = form.save(commit=False)
+            account.owner = request.user
+            account.save()
+            redirect_url =  'accountdetail'
+            
+            return HttpResponseRedirect(redirect_url)
+    else:
+        form = AccountForm()
+
+    context = {        'form': form,    }
+
+    template = 'ambulanceap/accountcru.html'
+
+    return render(request, template, context)
