@@ -59,6 +59,7 @@ def provider(request, template='ambulanceapp/provider.html'):
 #PROVIDER ACCOUNTS VIEWS
 class AccountList(ListView):
     model = Account
+    paginate_by = 10    
     template_name = 'ambulanceapp/account.html'
     context_object_name = 'account'
 
