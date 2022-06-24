@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
+from django.contrib.auth.views import LoginView, LogoutView
 
 from .forms import *
 from .models import *

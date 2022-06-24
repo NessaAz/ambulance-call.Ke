@@ -59,6 +59,8 @@ TEMPLATES = [
     },
 ]
 
+LOGIN_REDIRECT_URL = '/account/list/'
+
 WSGI_APPLICATION = 'ambulanceproject.wsgi.application'
 
 

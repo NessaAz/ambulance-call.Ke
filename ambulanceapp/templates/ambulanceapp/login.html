@@ -1,11 +1,11 @@
-{% extends 'base.html' %}
+{% extends 'ambulanceapp/base.html' %}
 {% block title %}Login{% endblock %}
 
 {% block content %}
     <div id="content-container" class="container p-none">
         <div class="lgn-container col-lg-8">
             <form id="login-form" method="post" 
-                  action="{% url 'django.contrib.auth.views.login' %}">
+                  action="{% url 'login' %}">
                 {% csrf_token %}
                 <table class="table">
                     <tr>
@@ -21,7 +21,7 @@
                 </table>
                 {% if form.errors %}
                     <p class=" label label-danger">
-                        Your username and password didn't match. 
+                        Your username and password didn't match any in our system. 
                         Please try again.
                     </p>
                 {% endif %}
