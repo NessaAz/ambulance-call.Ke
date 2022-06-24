@@ -2,6 +2,9 @@ from django.db import models
 from django.contrib.auth.models import User
 from shortuuidfield import ShortUUIDField
 from django.urls import reverse
+from cloudinary.models import CloudinaryField
+
+
 
 class Ambulanceprovider(models.Model):
     user_rec = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -10,6 +13,8 @@ class Ambulanceprovider(models.Model):
     county = models.CharField(max_length=50)
     town = models.CharField(max_length=20)
     stripe_id = models.CharField(max_length=16, blank=True)
+    image = CloudinaryField('images', default='image')
+
 
     class Meta:
         verbose_name_plural = 'Ambulanceproviders'
@@ -29,6 +34,7 @@ class Account(models.Model):
     phone = models.CharField(max_length=20)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     created_on = models.DateField(auto_now_add=True)
+    image = CloudinaryField('images', default='image')
 
     class Meta:
         verbose_name_plural = 'accounts'

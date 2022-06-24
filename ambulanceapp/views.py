@@ -94,4 +94,4 @@ def accountdetail(request, uuid):
 
     context = {'account': account,}
 
-    return render(request, 'accounts/account_detail.html', context)    
+    return render(request, 'ambulanceapp/accountdetail.html', context)    
