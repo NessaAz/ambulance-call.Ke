@@ -99,7 +99,7 @@ def accountdetail(request, uuid):
 
 
 @login_required()
-def account_cru(request):
+def accountcru(request):
 
     if request.POST:
         form = AccountForm(request.POST)
