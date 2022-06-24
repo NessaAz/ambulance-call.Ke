@@ -11,7 +11,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum scale=1"> <!-- makes it look good on phone -->
-    <title> hello{% block title %}chapchap{% endblock title %} user </title>
+    <title> chapchap {% block title %}welcome{% endblock title %}  </title>
+    <link rel="icon" href="/static/images/ambu.png" type="image/icon type">
     <link href="{% static '/css/main.css'  %} " rel="stylesheet" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,8 +52,8 @@
 <!-- CSS STYLING -->
     <style>
         body{
-            font-family: 'Manrope', sans-serif;
-            color: green;
+            font-family: 'Manrope', sans-serif !important;
+            
         }
         
         .main-col {
@@ -60,6 +61,10 @@
             color: #2C3E50;   
             height: 100vh;
             width: 100%;
+        }
+
+        .btn{
+            background-color: #2C3E50;
         }
     </style>
     <script>

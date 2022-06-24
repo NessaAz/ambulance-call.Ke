@@ -16,7 +16,7 @@ from .models import *
 def home(request):  
     context = {}
     
-    return render(request, 'ambulanceapp/home.html', context)
+    return render(request, 'ambulanceapp/account.html', context)
 
 
 def provider(request, template='ambulanceapp/provider.html'):
@@ -62,7 +62,7 @@ class AccountList(ListView):
     model = Account
     paginate_by = 10    
     template_name = 'ambulanceapp/account.html'
-    context_object_name = 'account'
+    context_object_name = 'account_list'
 
     def get_queryset(self):
         try:
@@ -123,7 +123,7 @@ def accountcru(request, uuid=None):
     context = {        'form': form,
         'account':account   }
     
-    if request.is_ajax():
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         template = 'ambulanceapp/accountitemform.html'
     else:
         template = 'ambulanceapp/accountcru.html'

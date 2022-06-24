@@ -62,12 +62,12 @@ class AccountForm(forms.ModelForm):
                     'class':'gi-form-addr form-control'
                 }
             ),
-            'city': forms.TextInput(
-                attrs={
-                    'placeholder':'County',
-                    'class':'gi-form-addr form-control'
-                }
-            ),
+            # 'city': forms.TextInput(
+            #     attrs={
+            #         'placeholder':'County',
+            #         'class':'gi-form-addr form-control'
+            #     }
+            # ),
             'state': forms.TextInput(
                 attrs={
                     'placeholder':'Town',
